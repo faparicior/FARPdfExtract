@@ -35,7 +35,6 @@ class Transform
         if ($this->hasMatch()) {
             $value = $this->postProcess($this->matchValue);
         }
-
         return $value;
     }
 
@@ -45,6 +44,10 @@ class Transform
      */
     private function preProcess($value)
     {
+        if (is_null($this->preTransform->getPattern())) {
+            return $value;
+        }
+
         return preg_replace(
             $this->preTransform->getPattern(),
             $this->preTransform->getSubstitution(),
@@ -58,6 +61,10 @@ class Transform
      */
     private function postProcess($value)
     {
+        if (is_null($this->postTransform->getPattern())) {
+            return $value;
+        }
+
         return preg_replace(
             $this->postTransform->getPattern(),
             $this->postTransform->getSubstitution(),

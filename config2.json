@@ -1,0 +1,23 @@
+{
+  "element": {
+    "coordinates": {
+      "top": 287,
+      "left": 55,
+      "width": 12,
+      "font": 0
+    },
+    "transform": {
+      "pretransform": {
+        "pattern": "prepattern",
+        "substitution": "presubstitution"
+      },
+      "match": {
+        "pattern": "matchpattern"
+      },
+      "posttransform": {
+        "pattern": "postpattern",
+        "substitution": "postsubstitution"
+      }
+    }
+  }
+}

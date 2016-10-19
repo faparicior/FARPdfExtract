@@ -1,26 +1,26 @@
 <?php
 
-namespace Lib\Config\Entity\Components;
+namespace Lib\PdfInfo\Entity\Components;
 
-use Lib\Config\Entity\ConfigList;
+use Lib\PdfInfo\Entity\PdfPageInfoList;
 
-class ConfigListIterator implements \Iterator
+class PdfPageInfoListIterator implements \Iterator
 {
-    /* @var ConfigList $list */
+    /* @var PdfPageInfoList $list */
     private $list;
     private $current;
 
     /**
-     * @param ConfigList $listEntity
+     * @param PdfPageInfoList $valueList
      */
-    public function __construct(ConfigList $listEntity)
+    public function __construct(PdfPageInfoList $valueList)
     {
-        $this->list = $listEntity;
+        $this->list = $valueList;
         $this->current = 0;
     }
 
     /**
-     * @return Config
+     * @return PdfPageInfo
      */
     public function current()
     {
@@ -30,7 +30,7 @@ class ConfigListIterator implements \Iterator
     }
 
     /**
-     * @return Config|null
+     * @return PdfPageInfo|null
      */
     public function next()
     {
