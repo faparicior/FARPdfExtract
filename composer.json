@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Lib\\": "Lib/"
+    }
+  },
+  "require": {
+    "symfony/yaml": "^3.1"
+  }
+}
