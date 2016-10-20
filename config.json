@@ -1,12 +1,41 @@
 {
-  "element": {
-    "coordinates": {
-      "top": 287
+  "config": [
+    {
+      "name": "invoice",
+      "coordinates": {
+        "top": 287
+      },
+      "search": {
+        "match": {
+          "pattern": "/F\\d{2}-\\d{6}/"
+        }
+      },
+      "posttransform": {
+        "pattern": "/\\-/",
+        "substitution": ""
+      }
     },
-    "transform": {
-      "match": {
-        "pattern": "matchpattern"
+    {
+      "name": "invoice-date",
+      "coordinates": {
+        "top": 304
+      },
+      "search": {
+        "match": {
+          "pattern": "/\\d{2}\\/\\d{2}\\/\\d{2}/"
+        }
+      }
+    },
+    {
+      "name": "nif",
+      "coordinates": {
+        "top": 341
+      },
+      "search": {
+        "match": {
+          "pattern": "/[A-Z]{2}\\d{11}/"
+        }
       }
     }
-  }
+  ]
 }

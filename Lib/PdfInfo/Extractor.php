@@ -7,6 +7,7 @@ use Lib\Config\Entity\ConfigList;
 use Lib\Config\Entity\Components\Config;
 
 use Lib\PdfInfo\Entity\Components\PdfPageInfo;
+use Lib\PdfInfo\Entity\Components\Value;
 use Lib\PdfInfo\Entity\PdfPageInfoList;
 use Lib\PdfInfo\Entity\ValueList;
 
@@ -17,14 +18,14 @@ class Extractor
     private $fileContents;
     /* @var \SimpleXMLElement $xmlParsed */
     private $xmlParsed;
-    /* @var PdfPageInfo $pdfPageInfo */
-    private $pdfPageInfo;
-
+    /* @var PdfPageInfoList $pdfPageInfoList */
+    private $pdfPageInfoList;
 
     public function __construct(ConfigList $configList, $fileContents)
     {
         $this->configList = $configList;
         $this->fileContents = $fileContents;
+        $this->pdfPageInfoList = new PdfPageInfoList();
     }
 
     public function exec()
@@ -32,16 +33,6 @@ class Extractor
 
         $this->parseXml();
         $this->getValues();
-/*
-        $node = $xmlParsed->xpath('/pdf2xml/page/text[@top="287"]');
-        // Iterate over xml pages
-        foreach ($xmlParsed['page'] as $page) {
-            // Get values
-            // Add values to ValueList
-            // Add valueList to PdfPageInfo
-            var_dump($node);
-        }
-*/
     }
 
     private function parseXml()
@@ -52,19 +43,13 @@ class Extractor
     private function getValues()
     {
         $pages = $this->getPages();
-        // Iterate over xml pages
 
-        $pageList = new PdfPageInfoList();
         foreach ($pages as $page) {
-            $pageNum = $page->attributes()->{'number'};
-            $valueList = $this->getValueList($page);
+            $pageNum = $this->extractPageNum($page);
+            $valueList = $this->extractPageValues($page);
             $pageInfo = new PdfPageInfo($pageNum, $valueList);
 
-            $pageList->add($pageInfo);
-
-//            $elements = $this->getElements($page);
-            // Add values to ValueList
-            // Add valueList to PdfPageInfo
+            $this->pdfPageInfoList->add($pageInfo);
         }
     }
 
@@ -80,8 +65,9 @@ class Extractor
      * @param \SimpleXMLElement $page
      * @return ValueList
      */
-    private function getValueList(\SimpleXMLElement $page)
+    private function extractPageValues(\SimpleXMLElement $page)
     {
+        $valueList = new ValueList();
         // Get values from coordinates
         $configIterator = $this->configList->getIterator();
         foreach ($configIterator as $configItem) {
@@ -89,22 +75,54 @@ class Extractor
             $xpath = $configHelper->getXpath('text');
             /* @var \SimpleXMLElement[] $elements */
             $elements = $page->xpath($xpath);
-            $this->applyFilters($elements, $configItem);
+
+            $value = $this->applyFilters($elements, $configItem);
+            $valueList->add($value);
         }
-        return $elements;
+        return $valueList;
+    }
+
+    /**
+     * @param \SimpleXMLElement $page
+     * @return string
+     */
+    private function extractPageNum($page)
+    {
+        $number = $page->attributes()->{'number'};
+
+        // TODO: Review that cast
+        return (string)$number;
     }
 
     /**
      * @param \SimpleXMLElement[] $elements
      * @param Config $configItem
+     * @return Value
      */
     private function applyFilters($elements, $configItem)
     {
-        foreach ($elements as $element)
-        {
+        $value = null;
+
+        foreach ($elements as $element) {
             $transform = $configItem->getTransform();
-            $arr = $transform->process($element->asXML());
-            $arrr = $transform->hasMatch();
+            $valueMatch = $transform->process($element->asXML());
+            if ($transform->hasMatch()) {
+                $value = new Value(
+                    $configItem->getName(),
+                    $valueMatch
+                );
+            }
         }
+        return $value;
+        // TODO: Implements first, second, etc if there's more than one in coordinate
+        // Actually returns the last element
+    }
+
+    /**
+     * @return PdfPageInfoList
+     */
+    public function getPdfPageInfoList()
+    {
+        return $this->pdfPageInfoList;
     }
 }

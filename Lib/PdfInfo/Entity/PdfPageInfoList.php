@@ -3,8 +3,9 @@
 namespace Lib\PdfInfo\Entity;
 
 use Lib\PdfInfo\Entity\Components\PdfPageInfo;
+use Lib\PdfInfo\Entity\Components\PdfPageInfoListIterator;
 
-class PdfPageInfoList
+class PdfPageInfoList implements \JsonSerializable
 {
     private $valueList;
     private $valueCount;
@@ -55,10 +56,35 @@ class PdfPageInfoList
     }
 
     /**
-     * @return ValueListIterator
+     * @return PdfPageInfoListIterator
      */
     public function getIterator()
     {
-        return new ValueListIterator($this);
+        return new PdfPageInfoListIterator($this);
+    }
+
+    public function arraySerialize()
+    {
+        $pdfPageIterator = $this->getIterator();
+
+        $pages = null;
+
+        /* @var PdfPageInfo $pdfPage */
+        foreach ($pdfPageIterator as $pdfPage) {
+            $page['page'] = $pdfPage->getPage();
+            $pdfValueIterator= $pdfPage
+                ->getValueList()
+                ->getIterator();
+            foreach ($pdfValueIterator as $pdfValues) {
+                $page[$pdfValues->getName()] = $pdfValues->getValue();
+            }
+            $pages[] = $page;
+        }
+        return $pages;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->arraySerialize();
     }
 }

@@ -8,11 +8,18 @@ class Config
     private $coordinates;
     /* @var Transform $transform */
     private $transform;
+    private $name;
 
-    public function __construct($coordinates, $xmlTransform)
+    /**
+     * @param Coordinates $coordinates
+     * @param string $name
+     * @param Transform $transform
+     */
+    public function __construct(Coordinates $coordinates, $name, Transform $transform)
     {
         $this->coordinates = $coordinates;
-        $this->transform = $xmlTransform;
+        $this->name = $name;
+        $this->transform = $transform;
     }
 
     /**
@@ -30,4 +37,13 @@ class Config
     {
         return $this->transform;
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
 }

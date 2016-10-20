@@ -11,17 +11,16 @@ $configReader = new Json();
 $configBuilder = new Builder($configReader);
 $config = $configBuilder->createConfig();
 
-$fileReader = new Filesystem("./test/pdftest.pdf");
+$fileReader = new Filesystem('./test/pdftest.pdf');
 $fileContents = $fileReader->exec();
 
 $xmlExtractor = new Extractor($config, $fileContents);
 $xmlExtractor->exec();
 
-/*
-$configIterator = $config->getIterator();
+$pdfInfo = $xmlExtractor
+    ->getPdfPageInfoList()
+    ->arraySerialize();
 
-foreach ($configIterator as $item) {
-    var_dump($item);
-}
-var_dump($config);
-*/
+$pdfInfo = json_encode($xmlExtractor->getPdfPageInfoList(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+file_put_contents('./test/pdftest.json', $pdfInfo);

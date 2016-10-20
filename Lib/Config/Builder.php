@@ -35,11 +35,12 @@ class Builder
         $configList = new ConfigList();
         $coordinates = null;
 
-        foreach ($arrayConfig as $configElement) {
+        foreach ($arrayConfig['config'] as $configElement) {
             $coordinates = $this->decodeCoordinates($configElement);
+            $name = $configElement["name"];
             $transform = $this->decodeTransformPatterns($configElement);
 
-            $config = new Config($coordinates, $transform);
+            $config = new Config($coordinates, $name, $transform);
             $configList->add($config);
         }
         return $configList;
@@ -67,11 +68,9 @@ class Builder
      */
     private function decodeTransformPatterns($arrayConfig)
     {
-        $arrayTransform = $arrayConfig["transform"];
-
-        $preTransform = $this->decodePreTransform($arrayTransform);
-        $postTransform = $this->decodePostTransform($arrayTransform);
-        $match = $this->decodeMatch($arrayTransform);
+        $preTransform = $this->decodePreTransform($arrayConfig);
+        $postTransform = $this->decodePostTransform($arrayConfig);
+        $match = $this->decodeMatch($arrayConfig);
 
         return new Transform($preTransform, $match, $postTransform);
     }
@@ -112,6 +111,6 @@ class Builder
      */
     private function decodeMatch($arrayConfig)
     {
-        return $arrayConfig["match"]["pattern"];
+        return $arrayConfig["search"]["match"]["pattern"];
     }
 }
