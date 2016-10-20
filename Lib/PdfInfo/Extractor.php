@@ -2,7 +2,7 @@
 
 namespace Lib\PdfInfo;
 
-use Lib\Config\Entity\ConfigHelper;
+use Lib\Helper\XPathHelper;
 use Lib\Config\Entity\ConfigList;
 use Lib\Config\Entity\Components\Config;
 
@@ -71,7 +71,7 @@ class Extractor
         // Get values from coordinates
         $configIterator = $this->configList->getIterator();
         foreach ($configIterator as $configItem) {
-            $configHelper = new ConfigHelper($configItem);
+            $configHelper = new XPathHelper($configItem);
             $xpath = $configHelper->getXpath('text');
             /* @var \SimpleXMLElement[] $elements */
             $elements = $page->xpath($xpath);

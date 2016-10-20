@@ -1,10 +1,10 @@
 <?php
 
-namespace Lib\Config\Entity;
+namespace Lib\Helper;
 
 use Lib\Config\Entity\Components\Config;
 
-class ConfigHelper
+class XPathHelper
 {
     private $config;
 
