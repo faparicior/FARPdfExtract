@@ -18,12 +18,13 @@ class ConfigHelper
 
     public function getXpath($tag)
     {
+        $and = ' and ';
         return $tag
             ."["
                 .$this->buildXpath('top', '')
-                .$this->buildXpath('left', ',')
-                .$this->buildXpath('width', ',')
-                .$this->buildXpath('font', ',')
+                .$this->buildXpath('left', $and)
+                .$this->buildXpath('width', $and)
+                .$this->buildXpath('font', $and)
             ."]";
     }
 

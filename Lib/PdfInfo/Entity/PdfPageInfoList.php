@@ -71,6 +71,7 @@ class PdfPageInfoList implements \JsonSerializable
 
         /* @var PdfPageInfo $pdfPage */
         foreach ($pdfPageIterator as $pdfPage) {
+            $page = null;
             $page['page'] = $pdfPage->getPage();
             $pdfValueIterator= $pdfPage
                 ->getValueList()

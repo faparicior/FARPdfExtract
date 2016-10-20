@@ -76,8 +76,10 @@ class Extractor
             /* @var \SimpleXMLElement[] $elements */
             $elements = $page->xpath($xpath);
 
-            $value = $this->applyFilters($elements, $configItem);
-            $valueList->add($value);
+            if (count($elements)>0) {
+                $value = $this->applyFilters($elements, $configItem);
+                $valueList->add($value);
+            }
         }
         return $valueList;
     }
