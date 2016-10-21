@@ -33,9 +33,9 @@ class Transform
         $value = $this->preProcess($value);
         $this->match($value);
         if ($this->hasMatch()) {
-            $value = $this->postProcess($this->matchValue);
+            $this->matchValue = $this->postProcess($this->matchValue);
         }
-        return $value;
+        return $this->hasMatch();
     }
 
     /**
@@ -92,5 +92,13 @@ class Transform
     public function hasMatch()
     {
         return strlen($this->matchValue) > 0;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMatchValue()
+    {
+        return $this->matchValue;
     }
 }

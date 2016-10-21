@@ -78,6 +78,7 @@ class Extractor
 
             if (count($elements)>0) {
                 $value = $this->applyFilters($elements, $configItem);
+                // TODO: Discard Null values
                 $valueList->add($value);
             }
         }
@@ -107,11 +108,13 @@ class Extractor
 
         foreach ($elements as $element) {
             $transform = $configItem->getTransform();
-            $valueMatch = $transform->process($element->asXML());
-            if ($transform->hasMatch()) {
+
+            if ($transform->process($element->asXML())) {
                 $value = new Value(
                     $configItem->getName(),
-                    $valueMatch
+                    $configItem
+                        ->getTransform()
+                        ->getMatchValue()
                 );
             }
         }

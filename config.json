@@ -3,41 +3,45 @@
     {
       "name": "invoice",
       "coordinates": {
-        "top": 327
+        "top": 189
       },
       "search": {
         "match": {
-          "pattern": "/\\d*\\/\\d{4}\\/\\d{2}/"
+          "pattern": "/>\\d.*</"
         }
       },
       "posttransform": {
-        "pattern": "/\\//",
+        "pattern": "/(<|>)/",
         "substitution": ""
       }
     },
     {
       "name": "invoice-date",
       "coordinates": {
-        "top": 327
+        "top": 294
       },
       "search": {
         "match": {
-          "pattern": "/\\d*\\/\\d{2}\\/\\d{4}/"
+          "pattern": "/\\d*-\\d{2}-\\d{2}/"
         }
+      },
+      "posttransform": {
+        "pattern": "/-/",
+        "substitution": "\\/"
       }
     },
     {
       "name": "nif",
       "coordinates": {
-        "top": 111
+        "top": 331
       },
       "search": {
         "match": {
-          "pattern": "/C.F.:\\d*[A-Z]/"
+          "pattern": "/>\\w*</"
         }
       },
       "posttransform": {
-        "pattern": "/C.F.:/",
+        "pattern": "/(<|>)/",
         "substitution": ""
       }
     }
