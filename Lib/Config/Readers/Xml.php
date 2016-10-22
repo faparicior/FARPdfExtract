@@ -1,7 +1,7 @@
 <?php
-namespace Lib\Config\Readers;
+namespace Faparicior\PdfExtract\Config\Readers;
 
-use Lib\Config\Api\Reader;
+use Faparicior\PdfExtract\Config\Api\Reader;
 
 class Xml implements Reader
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Helper;
+namespace Faparicior\PdfExtract\Helper;
 
 class ListIterator implements \Iterator
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Helper;
+namespace Faparicior\PdfExtract\Helper;
 
-use Lib\Config\Entity\Components\Config;
+use Faparicior\PdfExtract\Config\Entity\Components\Config;
 
 class XPathHelper
 {
@@ -15,6 +15,8 @@ class XPathHelper
     {
         $this->config = $config;
     }
+
+    // TODO: Move to Config
 
     public function getXpath($tag)
     {
@@ -30,58 +32,12 @@ class XPathHelper
 
     private function buildXpath($coordinate, $prepend)
     {
-        switch ($coordinate) {
-            case 'top':
-                $xpath = $this->buildParameter(
-                    $coordinate,
-                    $prepend,
-                    $this->config
-                        ->getCoordinates()
-                        ->getTop()
-                );
-                break;
-            case 'left':
-                $xpath = $this->buildParameter(
-                    $coordinate,
-                    $prepend,
-                    $this->config
-                        ->getCoordinates()
-                        ->getLeft()
-                );
-                break;
-            case 'width':
-                $xpath = $this->buildParameter(
-                    $coordinate,
-                    $prepend,
-                    $this->config
-                        ->getCoordinates()
-                        ->getWidth()
-                );
-                break;
-            case 'font':
-                $xpath = $this->buildParameter(
-                    $coordinate,
-                    $prepend,
-                    $this->config
-                        ->getCoordinates()
-                        ->getFont()
-                );
-                break;
-            default:
-                $xpath= '';
-                break;
+        $func = 'get' . ucfirst($coordinate) . '()';
+        $value = $this->config->getCoordinates()->$func;
+
+        if (!$value) {
+            return '';
         }
-        return $xpath;
-    }
-
-    private function buildParameter($coordinate, $prepend, $value)
-    {
-        $xpath = '';
-
-        if ($value) {
-            $xpath = $prepend."@".$coordinate."=".$value;
-        }
-
-        return $xpath;
+        return $prepend."@".$coordinate."=".$value;
     }
 }

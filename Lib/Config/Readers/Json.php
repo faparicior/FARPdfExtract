@@ -1,16 +1,42 @@
 <?php
-namespace Lib\Config\Readers;
+namespace Faparicior\PdfExtract\Config\Readers;
 
-use Lib\Config\Api\Reader;
+use Faparicior\PdfExtract\Config\Api\Reader;
+use Faparicior\PdfExtract\Exceptions\InvalidParameterException;
 
 class Json implements Reader
 {
+    const FILENAME = 'filename';
+
+    private $params;
+
+    /**
+     * Json constructor.
+     * @param array $params
+     * @throws InvalidParameterException
+     */
+    public function __construct(array $params)
+    {
+        if (!isset($params[static::FILENAME])) {
+            throw new InvalidParameterException();
+        }
+        if (!file_exists($params[static::FILENAME])) {
+            // TODO: lanzar excepcion adecuada
+            throw new InvalidParameterException();
+        }
+        if (!is_readable($params[static::FILENAME])) {
+            // TODO: lanzar excepcion adecuada
+            throw new InvalidParameterException();
+        }
+        $this->params = $params;
+    }
+
     /**
      * @return array
      */
     public function readConfig()
     {
-        return $this->getJsonConfigContents("./config.json");
+        return $this->getJsonConfigContents($this->params[static::FILENAME]);
     }
 
     /**

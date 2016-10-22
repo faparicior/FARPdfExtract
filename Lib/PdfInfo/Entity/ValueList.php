@@ -1,9 +1,9 @@
 <?php
 
-namespace Lib\PdfInfo\Entity;
+namespace Faparicior\PdfExtract\PdfInfo\Entity;
 
-use Lib\PdfInfo\Entity\Components\Value;
-use Lib\PdfInfo\Entity\Components\ValueListIterator;
+use Faparicior\PdfExtract\PdfInfo\Entity\Components\Value;
+use Faparicior\PdfExtract\PdfInfo\Entity\Components\ValueListIterator;
 
 class ValueList
 {

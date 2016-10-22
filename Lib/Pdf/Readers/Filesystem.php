@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Pdf\Readers;
+namespace Faparicior\PdfExtract\Pdf\Readers;
 
-use Lib\Pdf\Api\Reader;
+use Faparicior\PdfExtract\Pdf\Api\Reader;
 
 class Filesystem extends Reader
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\PdfInfo\Entity\Components;
+namespace Faparicior\PdfExtract\PdfInfo\Entity\Components;
 
-use Lib\PdfInfo\Entity\ValueList;
+use Faparicior\PdfExtract\PdfInfo\Entity\ValueList;
 
 class PdfPageInfo
 {

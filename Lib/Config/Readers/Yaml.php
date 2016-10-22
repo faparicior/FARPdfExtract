@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Config\Readers;
+namespace Faparicior\PdfExtract\Config\Readers;
 
-use Lib\Config\Api\Reader;
+use Faparicior\PdfExtract\Config\Api\Reader;
 use Symfony\Component\Yaml\Yaml as YamlParser;
 
 class Yaml implements Reader

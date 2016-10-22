@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Config\Entity\Components;
+namespace Faparicior\PdfExtract\Config\Entity\Components;
 
-use Lib\Config\Entity\ConfigList;
+use Faparicior\PdfExtract\Config\Entity\ConfigList;
 
 class ConfigListIterator implements \Iterator
 {

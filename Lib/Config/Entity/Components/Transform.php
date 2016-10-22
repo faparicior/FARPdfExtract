@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Config\Entity\Components;
+namespace Faparicior\PdfExtract\Config\Entity\Components;
 
 class Transform
 {

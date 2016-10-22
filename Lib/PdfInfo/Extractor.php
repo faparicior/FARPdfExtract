@@ -1,15 +1,15 @@
 <?php
 
-namespace Lib\PdfInfo;
+namespace Faparicior\PdfExtract\PdfInfo;
 
-use Lib\Helper\XPathHelper;
-use Lib\Config\Entity\ConfigList;
-use Lib\Config\Entity\Components\Config;
+use Faparicior\PdfExtract\Helper\XPathHelper;
+use Faparicior\PdfExtract\Config\Entity\ConfigList;
+use Faparicior\PdfExtract\Config\Entity\Components\Config;
 
-use Lib\PdfInfo\Entity\Components\PdfPageInfo;
-use Lib\PdfInfo\Entity\Components\Value;
-use Lib\PdfInfo\Entity\PdfPageInfoList;
-use Lib\PdfInfo\Entity\ValueList;
+use Faparicior\PdfExtract\PdfInfo\Entity\Components\PdfPageInfo;
+use Faparicior\PdfExtract\PdfInfo\Entity\Components\Value;
+use Faparicior\PdfExtract\PdfInfo\Entity\PdfPageInfoList;
+use Faparicior\PdfExtract\PdfInfo\Entity\ValueList;
 
 class Extractor
 {
@@ -30,7 +30,6 @@ class Extractor
 
     public function exec()
     {
-
         $this->parseXml();
         $this->getValues();
     }

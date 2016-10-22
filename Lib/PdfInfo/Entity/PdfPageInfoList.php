@@ -1,9 +1,9 @@
 <?php
 
-namespace Lib\PdfInfo\Entity;
+namespace Faparicior\PdfExtract\PdfInfo\Entity;
 
-use Lib\PdfInfo\Entity\Components\PdfPageInfo;
-use Lib\PdfInfo\Entity\Components\PdfPageInfoListIterator;
+use Faparicior\PdfExtract\PdfInfo\Entity\Components\PdfPageInfo;
+use Faparicior\PdfExtract\PdfInfo\Entity\Components\PdfPageInfoListIterator;
 
 class PdfPageInfoList implements \JsonSerializable
 {

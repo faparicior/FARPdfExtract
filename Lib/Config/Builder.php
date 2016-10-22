@@ -1,17 +1,17 @@
 <?php
 
-namespace Lib\Config;
+namespace Faparicior\PdfExtract\Config;
 
-use Lib\Config\Readers\Json;
-use Lib\Config\Readers\Yaml;
-use Lib\Config\Readers\Xml;
+use Faparicior\PdfExtract\Config\Readers\Json;
+use Faparicior\PdfExtract\Config\Readers\Yaml;
+use Faparicior\PdfExtract\Config\Readers\Xml;
 
-use Lib\Config\Entity\Components\Config;
-use Lib\Config\Entity\Components\TransformPattern;
-use Lib\Config\Entity\Components\Coordinates;
-use Lib\Config\Entity\Components\Transform;
+use Faparicior\PdfExtract\Config\Entity\Components\Config;
+use Faparicior\PdfExtract\Config\Entity\Components\TransformPattern;
+use Faparicior\PdfExtract\Config\Entity\Components\Coordinates;
+use Faparicior\PdfExtract\Config\Entity\Components\Transform;
 
-use Lib\Config\Entity\ConfigList;
+use Faparicior\PdfExtract\Config\Entity\ConfigList;
 
 class Builder
 {

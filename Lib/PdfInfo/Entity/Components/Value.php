@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\PdfInfo\Entity\Components;
+namespace Faparicior\PdfExtract\PdfInfo\Entity\Components;
 
 class Value
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Config\Api;
+namespace Faparicior\PdfExtract\Config\Api;
 
 interface Reader
 {
