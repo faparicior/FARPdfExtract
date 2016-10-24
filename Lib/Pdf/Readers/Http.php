@@ -2,7 +2,7 @@
 
 namespace Faparicior\PdfExtract\Pdf\Readers;
 
-use Faparicior\PdfExtract\Pdf\Api\Reader;
+use Faparicior\PdfExtract\Pdf\Ifaces\Reader;
 
 class Http implements Reader
 {

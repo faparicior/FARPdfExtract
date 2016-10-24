@@ -37,6 +37,35 @@ class ConfigListTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testRemoveOneConfig()
+    {
+        $config = $this->getConfig();
+        $sut = new ConfigList();
+        $sut->add($config);
+
+        $config2 = $this->getConfig2();
+        $sut->add($config2);
+
+        $actual = $sut->count();
+        $expected = 2;
+
+        $this->assertEquals($expected, $actual);
+
+        $sut->remove($config);
+
+        $actual = $sut->count();
+        $expected = 1;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testGetIteratorConfig()
+    {
+        $configList = new ConfigList();
+        $sut = $configList->getIterator();
+        $this->assertInstanceOf('\Faparicior\PdfExtract\Config\Entity\Components\ConfigListIterator', $sut);
+    }
+
     /**
      * @return Config
      */
@@ -63,7 +92,24 @@ class ConfigListTest extends \PHPUnit_Framework_TestCase
 
         $transform = new Transform($preTransform, $matchFormula, $postTransform);
 
-        $config = new Config($coordinates, $name, $transform);
-        return $config;
+        return new Config($coordinates, $name, $transform);
+    }
+
+    private function getConfig2()
+    {
+        $coordinates = new Coordinates('11', '20', '30', '40');
+        $name = 'dummyConfig';
+
+        $pattern = 'pattern';
+        $substitution = 'substitution';
+        $preTransform = new TransformPattern($pattern, $substitution);
+
+        $matchFormula = 'matchformula';
+
+        $postTransform = new TransformPattern($pattern, $substitution);
+
+        $transform = new Transform($preTransform, $matchFormula, $postTransform);
+
+        return new Config($coordinates, $name, $transform);
     }
 }

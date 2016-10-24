@@ -4,3 +4,4 @@
 /test/
 /coverage
 /bin
+/Lib/Tests/TestFiles/notreadable.json

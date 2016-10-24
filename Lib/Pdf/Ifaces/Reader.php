@@ -1,6 +1,6 @@
 <?php
 
-namespace Faparicior\PdfExtract\Pdf\Api;
+namespace Faparicior\PdfExtract\Pdf\Ifaces;
 
 abstract class Reader
 {

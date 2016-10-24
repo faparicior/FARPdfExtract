@@ -6,11 +6,11 @@ class Transform
 {
     /* @var TransformPattern $preTransform */
     private $preTransform;
+
     /* @var TransformPattern $postTransform */
     private $postTransform;
 
     private $matchFormula;
-    private $matchValue;
 
     /**
      * @param TransformPattern $preTransform
@@ -25,80 +25,26 @@ class Transform
     }
 
     /**
-     * @param $value
-     * @return string
+     * @return TransformPattern
      */
-    public function process($value)
+    public function getPreTransform()
     {
-        $value = $this->preProcess($value);
-        $this->match($value);
-        if ($this->hasMatch()) {
-            $this->matchValue = $this->postProcess($this->matchValue);
-        }
-        return $this->hasMatch();
+        return $this->preTransform;
     }
 
     /**
-     * @param $value
-     * @return string
+     * @return TransformPattern
      */
-    private function preProcess($value)
+    public function getPostTransform()
     {
-        if (is_null($this->preTransform->getPattern())) {
-            return $value;
-        }
-
-        return preg_replace(
-            $this->preTransform->getPattern(),
-            $this->preTransform->getSubstitution(),
-            $value
-        );
-    }
-
-    /**
-     * @param $value
-     * @return string
-     */
-    private function postProcess($value)
-    {
-        if (is_null($this->postTransform->getPattern())) {
-            return $value;
-        }
-
-        return preg_replace(
-            $this->postTransform->getPattern(),
-            $this->postTransform->getSubstitution(),
-            $value
-        );
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     */
-    private function match($value)
-    {
-        preg_match($this->matchFormula, $value, $arrayMatches);
-        if (count($arrayMatches) > 0) {
-            $this->matchValue = $arrayMatches[0];
-        }
-
-        return $this->hasMatch();
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasMatch()
-    {
-        return strlen($this->matchValue) > 0;
+        return $this->postTransform;
     }
 
     /**
      * @return string
      */
-    public function getMatchValue()
+    public function getMatchFormula()
     {
-        return $this->matchValue;
+        return $this->matchFormula;
     }
 }

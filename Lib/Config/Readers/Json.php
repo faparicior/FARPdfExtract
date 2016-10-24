@@ -1,7 +1,9 @@
 <?php
 namespace Faparicior\PdfExtract\Config\Readers;
 
-use Faparicior\PdfExtract\Config\Api\Reader;
+use Faparicior\PdfExtract\Config\Ifaces\Reader;
+use Faparicior\PdfExtract\Exceptions\FileNotExistsException;
+use Faparicior\PdfExtract\Exceptions\FileNotReadableException;
 use Faparicior\PdfExtract\Exceptions\InvalidParameterException;
 
 class Json implements Reader
@@ -13,6 +15,8 @@ class Json implements Reader
     /**
      * Json constructor.
      * @param array $params
+     * @throws FileNotExistsException
+     * @throws FileNotReadableException
      * @throws InvalidParameterException
      */
     public function __construct(array $params)
@@ -21,12 +25,10 @@ class Json implements Reader
             throw new InvalidParameterException();
         }
         if (!file_exists($params[static::FILENAME])) {
-            // TODO: lanzar excepcion adecuada
-            throw new InvalidParameterException();
+            throw new FileNotExistsException();
         }
         if (!is_readable($params[static::FILENAME])) {
-            // TODO: lanzar excepcion adecuada
-            throw new InvalidParameterException();
+            throw new FileNotReadableException();
         }
         $this->params = $params;
     }

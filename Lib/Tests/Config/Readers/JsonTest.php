@@ -31,7 +31,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Faparicior\PdfExtract\Exceptions\InvalidParameterException
+     * @expectedException \Faparicior\PdfExtract\Exceptions\FileNotExistsException
      */
     public function testInstantiationFileNotExists()
     {
@@ -43,7 +43,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Faparicior\PdfExtract\Exceptions\InvalidParameterException
+     * @expectedException \Faparicior\PdfExtract\Exceptions\FileNotReadableException
      */
     public function testInstantiationFileNotReadable()
     {

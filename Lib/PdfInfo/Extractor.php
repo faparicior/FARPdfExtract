@@ -107,8 +107,10 @@ class Extractor
 
         foreach ($elements as $element) {
             $transform = $configItem->getTransform();
+            $process = new Transform($transform);
 
-            if ($transform->process($element->asXML())) {
+
+            if ($process->process($element->asXML())) {
                 $value = new Value(
                     $configItem->getName(),
                     $configItem
