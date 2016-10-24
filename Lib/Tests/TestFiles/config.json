@@ -40,7 +40,7 @@
           "pattern": "/>\\w*</"
         }
       },
-      "posttransform": {
+      "pretransform": {
         "pattern": "/(<|>)/",
         "substitution": ""
       }

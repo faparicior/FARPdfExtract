@@ -54,11 +54,22 @@ class Builder
     {
         $coordinates = $arrayConfig["coordinates"];
 
+        // TODO: Gestionar valores nulos de configuración
+
+        $arrayModel = [
+            'top' => null,
+            'left' => null,
+            'width' => null,
+            'font' => null
+        ];
+
+        $arrayModel = array_replace($arrayModel, $coordinates);
+
         return new Coordinates(
-            $coordinates["top"],
-            $coordinates["left"],
-            $coordinates["width"],
-            $coordinates["font"]
+            $arrayModel["top"],
+            $arrayModel["left"],
+            $arrayModel["width"],
+            $arrayModel["font"]
         );
     }
 
@@ -81,6 +92,10 @@ class Builder
      */
     private function decodePreTransform($arrayConfig)
     {
+        if (!isset($arrayConfig['pretransform'])) {
+            return null;
+        }
+
         return $this->decodeTransformPattern($arrayConfig["pretransform"]);
     }
 
@@ -90,6 +105,10 @@ class Builder
      */
     private function decodePostTransform($arrayConfig)
     {
+        if (!isset($arrayConfig['posttransform'])) {
+            return null;
+        }
+
         return $this->decodeTransformPattern($arrayConfig["posttransform"]);
     }
 
@@ -99,9 +118,16 @@ class Builder
      */
     private function decodeTransformPattern($arrayPattern)
     {
+        $arrayModel = [
+            'pattern' => null,
+            'substitution' => null
+        ];
+
+        $arrayModel = array_replace($arrayModel, $arrayPattern);
+
         return new TransformPattern(
-            $arrayPattern["pattern"],
-            $arrayPattern["substitution"]
+            $arrayModel["pattern"],
+            $arrayModel["substitution"]
         );
     }
 
