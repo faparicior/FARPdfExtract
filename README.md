@@ -1,1 +1,1 @@
-# FARPdfExtract [![Build Status](https://travis-ci.org/faparicior/FARPdfExtract.svg?branch=master)](https://travis-ci.org/faparicior/FARPdfExtract)
+# FARPdfExtract [![Build Status](https://travis-ci.org/faparicior/FARPdfExtract.svg?branch=master)](https://travis-ci.org/faparicior/FARPdfExtract) [![Coverage Status](https://coveralls.io/repos/github/faparicior/FARPdfExtract/badge.svg?branch=master)](https://coveralls.io/github/faparicior/FARPdfExtract?branch=master)
