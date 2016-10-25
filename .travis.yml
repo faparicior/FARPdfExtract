@@ -6,7 +6,7 @@ php:
 
 before_script:
  - wget http://getcomposer.org/composer.phar
- - sudo apt-get install poppler
+ - sudo apt-get install poppler-utils
  - php composer.phar install --dev --no-interaction
  - composer require satooshi/php-coveralls:dev-master -n
 
