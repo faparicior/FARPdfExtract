@@ -18,15 +18,6 @@ class ExtractorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Faparicior\PdfExtract\PdfInfo\Extractor', $sut);
     }
 
-    public function testExec()
-    {
-        $config = $this->getConfig();
-        $file = $this->getFile();
-        $sut = new Extractor($config, $file);
-
-        $sut->exec();
-    }
-
     private function getMockConfig()
     {
         return $this->createMock('\\Faparicior\\PdfExtract\\Config\\Entity\\ConfigList');
