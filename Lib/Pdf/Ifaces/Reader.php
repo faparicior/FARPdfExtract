@@ -21,7 +21,6 @@ abstract class Reader
         $command = "pdftohtml -i -xml "
             .$this->source." "
             .$this->sourceXml;
-        ;
         exec($command);
     }
 

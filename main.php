@@ -2,12 +2,17 @@
 
 require "vendor/autoload.php";
 
-use Lib\Config\Readers\Json;
-use Lib\Config\Builder;
-use Lib\Pdf\Readers\Filesystem;
-use Lib\PdfInfo\Extractor;
+use Faparicior\PdfExtract\Config\Readers\Json;
+use Faparicior\PdfExtract\Config\Builder;
+use Faparicior\PdfExtract\Pdf\Readers\Filesystem;
+use Faparicior\PdfExtract\PdfInfo\Extractor;
 
-$configReader = new Json();
+$configReader = new Json(
+    [
+        'filename' => './config.json'
+    ]
+);
+
 $configBuilder = new Builder($configReader);
 $config = $configBuilder->createConfig();
 

@@ -113,9 +113,7 @@ class Extractor
             if ($process->process($element->asXML())) {
                 $value = new Value(
                     $configItem->getName(),
-                    $configItem
-                        ->getTransform()
-                        ->getMatchValue()
+                    $process->getMatchValue()
                 );
             }
         }
