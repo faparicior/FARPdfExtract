@@ -37,7 +37,7 @@ class Transform
         $preTransform = $this->transform
             ->getPreTransform();
 
-        if (is_null($preTransform->getPattern())) {
+        if (is_null($preTransform) || is_null($preTransform->getPattern())) {
             return $value;
         }
 
@@ -55,9 +55,9 @@ class Transform
     private function postProcess($value)
     {
         $postTransform = $this->transform
-            ->getPreTransform();
+            ->getPostTransform();
 
-        if (is_null($postTransform->getPattern())) {
+        if (is_null($postTransform) || is_null($postTransform->getPattern())) {
             return $value;
         }
 

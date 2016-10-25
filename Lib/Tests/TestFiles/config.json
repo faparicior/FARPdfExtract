@@ -3,11 +3,11 @@
     {
       "name": "invoice",
       "coordinates": {
-        "top": 189
+        "top": 233
       },
       "search": {
         "match": {
-          "pattern": "/>\\d.*</"
+          "pattern": "/>INV-\\d.*</"
         }
       },
       "posttransform": {

@@ -32,8 +32,10 @@ class XPathHelper
 
     private function buildXpath($coordinate, $prepend)
     {
-        $func = 'get' . ucfirst($coordinate) . '()';
-        $value = $this->config->getCoordinates()->$func;
+        $func = 'get' . ucfirst($coordinate);
+//        $value = $this->config->getCoordinates()->getTop();
+
+        $value = $this->config->getCoordinates()->$func();
 
         if (!$value) {
             return '';

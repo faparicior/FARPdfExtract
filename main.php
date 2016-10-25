@@ -9,14 +9,14 @@ use Faparicior\PdfExtract\PdfInfo\Extractor;
 
 $configReader = new Json(
     [
-        'filename' => './config.json'
+        'filename' => __DIR__.'/Lib/Tests/TestFiles/config.json'
     ]
 );
 
 $configBuilder = new Builder($configReader);
 $config = $configBuilder->createConfig();
 
-$fileReader = new Filesystem('./test/pdftest.pdf');
+$fileReader = new Filesystem(__DIR__.'/Lib/Tests/TestFiles/pdftest.pdf');
 $fileContents = $fileReader->exec();
 
 $xmlExtractor = new Extractor($config, $fileContents);
@@ -28,4 +28,4 @@ $pdfInfo = $xmlExtractor
 
 $pdfInfo = json_encode($xmlExtractor->getPdfPageInfoList(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
-file_put_contents('./test/pdftest.json', $pdfInfo);
+file_put_contents(__DIR__.'/Lib/Tests/TestFiles/pdftest.json', $pdfInfo);

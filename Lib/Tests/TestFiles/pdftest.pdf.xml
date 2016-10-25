@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler" version="0.26.5">
+<page number="1" position="absolute" top="0" left="0" height="1188" width="918">
+	<fontspec id="0" size="8" family="Times" color="#000000"/>
+	<fontspec id="1" size="34" family="Times" color="#000000"/>
+	<fontspec id="2" size="11" family="Times" color="#000000"/>
+	<fontspec id="3" size="11" family="Times" color="#000000"/>
+	<fontspec id="4" size="14" family="Times" color="#000000"/>
+<text top="1125" left="43" width="346" height="11" font="0">Registered Office: 242 S. Washington Blvd. #249, Sarasota, Florida, 34236, USA.</text>
+<text top="176" left="43" width="226" height="36" font="1">DRAFT INVOICE</text>
+<text top="229" left="85" width="108" height="14" font="2">Preferred Customer</text>
+<text top="174" left="542" width="69" height="14" font="3"><b>Invoice Date</b></text>
+<text top="190" left="542" width="71" height="14" font="2">Dec 31, 2016</text>
+<text top="217" left="542" width="89" height="14" font="3"><b>Invoice Number</b></text>
+<text top="233" left="542" width="51" height="14" font="2">INV-1220</text>
+<text top="260" left="542" width="56" height="14" font="3"><b>Reference</b></text>
+<text top="276" left="542" width="125" height="14" font="2">Authentic Jobs Volume</text>
+<text top="292" left="542" width="48" height="14" font="2">Discount</text>
+<text top="175" left="709" width="106" height="14" font="2">Authentic Jobs, Inc.</text>
+<text top="195" left="709" width="162" height="14" font="2">242 S. Washington Blvd. #249</text>
+<text top="214" left="709" width="145" height="14" font="2">SARASOTA FLORIDA 34236</text>
+<text top="234" left="709" width="23" height="14" font="2">USA</text>
+<text top="437" left="47" width="64" height="14" font="3"><b>Description</b></text>
+<text top="437" left="554" width="49" height="14" font="3"><b>Quantity</b></text>
+<text top="437" left="670" width="55" height="14" font="3"><b>Unit Price</b></text>
+<text top="437" left="774" width="72" height="14" font="3"><b>Amount USD</b></text>
+<text top="471" left="47" width="84" height="14" font="2">Full-time listing</text>
+<text top="471" left="573" width="31" height="14" font="2">10.00</text>
+<text top="471" left="687" width="38" height="14" font="2">300.00</text>
+<text top="471" left="798" width="48" height="14" font="2">3,000.00</text>
+<text top="506" left="47" width="126" height="14" font="2">Volume discount (30%)</text>
+<text top="506" left="573" width="31" height="14" font="2">10.00</text>
+<text top="506" left="686" width="39" height="14" font="2">(90.00)</text>
+<text top="506" left="800" width="46" height="14" font="2">(900.00)</text>
+<text top="540" left="679" width="46" height="14" font="2">Subtotal</text>
+<text top="540" left="798" width="48" height="14" font="2">2,100.00</text>
+<text top="574" left="663" width="61" height="14" font="3"><b>TOTAL USD</b></text>
+<text top="574" left="798" width="48" height="14" font="3"><b>2,100.00</b></text>
+<text top="642" left="43" width="156" height="16" font="4"><b>Due Date: Dec 31, 2016</b></text>
+</page>
+</pdf2xml>
